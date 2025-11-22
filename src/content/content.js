@@ -1876,6 +1876,7 @@
                         } else if (key === "Up" || key === "Down") {
                             const delta = key === "Down" ? -0.05 : 0.05;
                             PVI.VID.volume = Math.max(0, Math.min(1, PVI.VID.volume + delta));
+                            if (delta > 0) PVI.VID.muted = false;
                         }
                     }
 
@@ -1930,6 +1931,7 @@
                             } else {
                                 const delta = key === "Down" ? -0.05 : 0.05;
                                 PVI.VID.volume = Math.max(0, Math.min(1, PVI.VID.volume + delta));
+                                if (delta > 0) PVI.VID.muted = false;
                             }
 
                         } else if (!e.shiftKey && (key === "PgUp" || key === "PgDn")) {
@@ -2012,6 +2014,10 @@
                 } else if (key === cfg.keys.prefs) {
                     Port.send({ cmd: "open", url: "options/options.html#settings" });
                     if (!PVI.fullZm) PVI.reset();
+
+                } else if (key === "M" && PVI.CNT === PVI.VID) {
+                    PVI.VID.muted = !PVI.VID.muted;
+
                 } else pv = false;
             } else pv = false;
             if (pv) pdsp(e);
