@@ -524,6 +524,27 @@ button.alert {
 }
 #sieve_count {
     margin-left: 10px;
+    cursor: help;
+}
+.sieve_search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.clear_search {
+    position: absolute;
+    right: 6px;
+    border: 1px solid #dddddd00;
+    color: #000000;
+    border-radius: 3px;
+    line-height: 18px;
+    padding: 0px 4px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    visibility: hidden;
+}
+span.clear_search:hover {
+    border-color: #888;
 }
 #sieve_container > div {
     float: left;

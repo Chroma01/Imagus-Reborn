@@ -33,6 +33,11 @@ var sieve_sec,
                 }
                 this.timer = setTimeout(SieveUI.search, 200);
             };
+            document.querySelector(".clear_search").addEventListener("click", function () {
+                SieveUI.search_f.value = "";
+                SieveUI.search_f.focus();
+                SieveUI.search();
+            });
             document.addEventListener("keydown", function (e) {
                 if (document.location.hash !== "#sieve") return;
                 let t = e.target;
@@ -641,7 +646,8 @@ var sieve_sec,
         },
 
         search: function () {
-            var what = RegExp(SieveUI.search_f.value.trim() || ".", "i"),
+            var str = SieveUI.search_f.value,
+                what = RegExp(str.trim() || ".", "i"),
                 list = sieve_container.children,
                 i = list.length;
             while (i--) {
@@ -651,6 +657,7 @@ var sieve_sec,
                 }
             }
             SieveUI.countRules();
+            document.querySelector(".clear_search").style.visibility = str ? "visible" : "hidden";
         },
         update: async function (local) {
             if (local || !cfg.sieve || !Object.keys(cfg.sieve).length || confirm(_("SIV_UPDALERT"))) {
