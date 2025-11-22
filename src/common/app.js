@@ -108,7 +108,7 @@ const Port = {
 };
 
 async function readCfg() {
-    let resp = await Port.send({ cmd: "cfg_get", keys: ["hz", "keys", "tls", "grants", "sieve"] });
+    let resp = await Port.send({ cmd: "cfg_get", keys: ["hz", "keys", "tls", "grants", "sieve", "sieveUpdateLast", "sieveRepository"] });
 
     if (!resp?.cfg) return;
     cfg = resp.cfg;

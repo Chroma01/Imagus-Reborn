@@ -13,6 +13,7 @@ var sieve_sec,
             this.search_f = document.getElementById("sieve_search");
             this.info_container = sieve_sec.querySelector(".container_info");
             this.countRules();
+            this.checkUpdate();
             this.search_f.onkeydown = function (e) {
                 clearTimeout(this.timer);
                 if (e.keyCode === 27) {
@@ -665,7 +666,31 @@ var sieve_sec,
                         return;
                     }
                 }
-                readCfg();
+                await readCfg();
+                await SieveUI.checkUpdate();
             }
         },
+
+        checkUpdate: async function () {
+            // assume that Sieve updates from GitHub repo
+            const [_, user, repo] = /https:\/\/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)/i.exec(cfg.sieveRepository) || [];
+            if (!user || !repo) return;
+            const lastCheck = new Date(cfg.sieveUpdateLast || 0);
+
+            // get date of last commit
+            const res = await fetch(`https://api.github.com/repos/${user}/${repo}/commits?per_page=1`);
+            if (!res.ok) return;
+            const data = await res.json();
+            const commitDate = new Date(data[0]?.commit?.committer?.date);
+
+            const updBtn = sieve_sec.querySelector("[data-action='update-rules']");
+            if (commitDate > lastCheck) {
+                updBtn.style.outline = "#ffaaaa solid 2px";
+                updBtn.style.filter = "none";
+                updBtn.title += "\nSieve update is available";
+            } else {
+                updBtn.style.outline = "";
+                updBtn.title += "\nSieve is up to date";
+            }
+        }
     };
