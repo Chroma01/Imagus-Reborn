@@ -1333,7 +1333,7 @@
             PVI.CAP.style.display = "none";
             PVI.CAP.children[2].style.display = "none";
             PVI.CAP.firstChild.textContent = idx + " / " + (album.length - 1);
-            if (cfg.hz.capText) PVI.prepareCaption(PVI.TRG, album[idx][1]);
+            PVI.prepareCaption(PVI.TRG, album[idx][1]);
             PVI.set(album[idx][0]);
             s = (s <= idx && !(s === 1 && idx === album.length - 1)) || (s === album.length - 1 && idx === 1) ? 1 : -1;
             i = 0;
@@ -2748,9 +2748,12 @@
                                 }
                             } else d.m = d.m[0];
                         }
-                        if (cfg.hz.capText && d.m[0])
+                        if (cfg.hz.capText && d.m[0]) {
                             if (d.m[1]) PVI.prepareCaption(trg, d.m[1]);
                             else if (cfg.hz.capLinkText && trg.IMGS_caption) d.m[1] = trg.IMGS_caption;
+                        } else if (d.m[0] && d.m[1]) {
+                            PVI.prepareCaption(trg, d.m[1]);
+                        }
                         d.m = d.m[0];
                     } else d.m = null;
                 else if (typeof d.m !== "object" && typeof d.m !== "string") d.m = false;
