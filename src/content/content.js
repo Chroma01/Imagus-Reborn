@@ -2374,12 +2374,12 @@
         },
 
         showHVR: function (visible = true) {
-            if (!PVI.TRG || cfg.hz.markOnHovered !== "styled" && cfg.hz.markOnHovered !== "both") return;
             clearTimeout(PVI.timers.hvr_hide);
             if (!visible) {
                 PVI.timers.hvr_hide = setTimeout(() => PVI.HVR.style.opacity = "0", 0);
                 return;
             }
+            if (!PVI.TRG || cfg.hz.markOnHovered !== "styled" && cfg.hz.markOnHovered !== "both") return;
             PVI.create();
             const rect = PVI.TRG.getBoundingClientRect();
             const style = win.getComputedStyle(PVI.TRG);
