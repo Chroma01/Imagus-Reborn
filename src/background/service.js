@@ -264,12 +264,12 @@ function onMessage(message, sender, sendResponse) {
             registerContentScripts();
             break;
         case "download":
-            const opts = { url: msg.url, priorityExt: msg.priorityExt, ext: msg.ext, isPrivate: context.isPrivate };
-            if (!opts?.url) break;
-            try {
-                chrome.downloads.download({ url: opts.url, incognito: opts.isPrivate });
-            } catch (r) {
-                chrome.downloads.download({ url: opts.url });
+            if (msg?.url) {
+                chrome.downloads.download({
+                    url: msg.url,
+                    filename: msg.filename && (msg.ext || msg.priorityExt) ? `${msg.filename}.${msg.priorityExt || msg.ext}` : undefined,
+                    conflictAction: "uniquify"
+                });
             }
             break;
         case "history":
