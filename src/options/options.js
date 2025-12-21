@@ -314,6 +314,9 @@ var load = function () {
             }
         }
     }
+
+    const fzExtra = [cfg.keys.mOrig, cfg.keys.mFit, cfg.keys.mFitW, cfg.keys.mFitH].filter(Boolean).map(k => `<b>${k}</b>`).join(", ");
+    document.querySelector("label[for='keys_hz-fullZm'] .extra").innerHTML = fzExtra ? ", " + fzExtra : "";
 };
 
 var save = async function () {
