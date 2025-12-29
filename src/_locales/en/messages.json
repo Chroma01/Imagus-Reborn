@@ -338,6 +338,12 @@
   "HZ_FZMODE_TIP": {
     "message": "The first mode will always center the image if it's smaller than the screen, otherwise it will proportionally zoom to the part of the image where the cursor is on the screen. Also its position will change as the mouse cursor moves.\nIn the second mode the position of the image is static, but it can be changed by dragging."
   },
+  "HZ_RESIZEMODE": {
+    "message": "Resize mode"
+  },
+  "HZ_RESIZEMODE_MEMORY": {
+    "message": "Remember last used"
+  },
   "HZ_CAP_STYLE": {
     "message": "Caption style"
   },

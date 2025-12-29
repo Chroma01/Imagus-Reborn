@@ -317,6 +317,12 @@
   "HZ_FZMODE_TIP": {
     "message": "Az első módban, ha a kép kisebb, mint az ablak, akkor mindig középre kerül, különben a helyzete arányosan változik az egérkurzor helyzetével az dokumentumon.\nA második módban a kép pozíciója statikus, de vonszolással változtatható."
   },
+  "HZ_RESIZEMODE": {
+    "message": "Átméretezési mód"
+  },
+  "HZ_RESIZEMODE_MEMORY": {
+    "message": "Emlékezz az utolsó használatra"
+  },
   "HZ_CAP_STYLE": {
     "message": "Fejléc stílusa"
   },

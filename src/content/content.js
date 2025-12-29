@@ -1153,7 +1153,7 @@
                 if (msg === false) {
                     box = PVI.DIV.style;
                     box.visibility = "hidden";
-                    PVI.resize(cfg.hz.resizeMode || 0);
+                    PVI.resize(PVI.resizeMode || 0);
                     PVI.m_move();
                     box.visibility = "visible";
                     PVI.updateCaption();
@@ -1961,8 +1961,11 @@
                         }
                     }
                 } else if (key === cfg.keys.mOrig || key === cfg.keys.mFit || key === cfg.keys.mFitW || key === cfg.keys.mFitH) {
-                    cfg.hz.resizeMode = key;
-                    Port.send({ cmd: "savePrefs", prefs: { hz: { resizeMode: key } } });
+                    PVI.resizeMode = key;
+                    if (cfg.hz.resizeModeType === undefined || cfg.hz.resizeModeType === "memory") {
+                        Port.send({ cmd: "savePrefs", prefs: { hz: { resizeMode: key } } });
+                    }
+
                     if (PVI.fullZm) {
                         PVI.resize(key);
                     } else {
@@ -2044,8 +2047,15 @@
             if (PVI.CNT === PVI.VID) PVI.VID.controls = true;
             if (PVI.state > 2 && PVI.fullZm !== 2) {
                 PVI.DIV.style.visibility = "hidden";
-                cfg.hz.resizeMode ||= cfg.keys.mFit;
-                PVI.resize(cfg.hz.resizeMode || 0);
+
+                if (cfg.hz.resizeModeType === undefined || cfg.hz.resizeModeType === "memory") PVI.resizeMode ||= cfg.hz.resizeMode;
+                else if (cfg.hz.resizeModeType === "orig") PVI.resizeMode ||= cfg.keys.mOrig;
+                else if (cfg.hz.resizeModeType === "fit") PVI.resizeMode ||= cfg.keys.mFit;
+                else if (cfg.hz.resizeModeType === "fitw") PVI.resizeMode ||= cfg.keys.mFitW;
+                else if (cfg.hz.resizeModeType === "fith") PVI.resizeMode ||= cfg.keys.mFitH;
+
+                PVI.resizeMode ||= cfg.keys.mFit;
+                PVI.resize(PVI.resizeMode || 0);
                 PVI.m_move();
                 PVI.DIV.style.visibility = "visible";
             }
@@ -2629,8 +2639,8 @@
             if (!PVI.fullZm) {
                 PVI.show();
             } else if (PVI.fullZm === 1) {
-                if (cfg.hz.resizeMode) {
-                    PVI.resize(cfg.hz.resizeMode);
+                if (PVI.resizeMode) {
+                    PVI.resize(PVI.resizeMode);
                 } else {
                     PVI.m_move();
                 }

@@ -317,6 +317,12 @@
   "HZ_FZMODE_TIP": {
     "message": "De eerste modus zal de afbeelding altijd in het midden plaatsen als de afbeelding kleiner is dan de pagina, anders zal het in proportie zoomen naar het deel waar de cursor zich bevind op het scherm. De positie veranderd met de cursor mee.\nIn de tweede modus is de positie van de afbeelding statisch, maar kan worden veranderd door te slepen."
   },
+  "HZ_RESIZEMODE": {
+    "message": "Schaalmodus"
+  },
+  "HZ_RESIZEMODE_MEMORY": {
+    "message": "Onthoud laatst gebruikt"
+  },
   "HZ_CAP_STYLE": {
     "message": "Stijl van het onderschrift"
   },

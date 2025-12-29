@@ -317,6 +317,12 @@
   "HZ_FZMODE_TIP": {
     "message": "V prvním režimu budou obrázky, které se vejdou na obrazovku, vždy zarovnány na střed. Větší obrázky budou zvětšeny na svou původní velikost a pohled bude automaticky zaměřen na místo pod kurzorem.\nV druhém režimu je pozice obrázku statická. Obrázek je možné posunout klasickým \"kliknout & táhnout\" myší."
   },
+  "HZ_RESIZEMODE": {
+    "message": "Režim změny velikosti"
+  },
+  "HZ_RESIZEMODE_MEMORY": {
+    "message": "Zapamatovat poslední použitý"
+  },
   "HZ_CAP_STYLE": {
     "message": "Styl titulku"
   },

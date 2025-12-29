@@ -299,6 +299,12 @@
   "HZ_FZMODE_TIP": {
     "message": "Pierwszy tryb zawsze wyśrodkowuje obrazek, jeśli ten jest mniejszy od wymiarów bieżącego okna - w przeciwnym wypadku powiększy on tę część obrazka, nad którą znajduje się kursor. Obrazek będzie automatycznie przesuwać się przy poruszaniu kursorem.\nDrugi tryb spowoduje, że obrazek będzie można przesuwać tylko poprzez przeciągnięcie go w wybrane miejsce."
   },
+  "HZ_RESIZEMODE": {
+    "message": "Tryb zmiany rozmiaru"
+  },
+  "HZ_RESIZEMODE_MEMORY": {
+    "message": "Zapamiętaj ostatnio używane"
+  },
   "HZ_CAP_STYLE": {
     "message": "Styl podpisu"
   },

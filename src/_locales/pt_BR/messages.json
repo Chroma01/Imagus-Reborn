@@ -296,6 +296,12 @@
   "HZ_FZMODE_TIP": {
     "message": "O primeiro modo irá manter a imagem, caso ela seja menor, ao centro da tela. Caso contrário, irá aplicar um zoom na parte da imagem onde o cursor esta. A posição irá mudar sempre que o cursor se mover.\nNo segundo modo a posição da imagem é fixa, no entanto é possível altera-la arrastando-a."
   },
+  "HZ_RESIZEMODE": {
+    "message": "Modo de redimensionamento"
+  },
+  "HZ_RESIZEMODE_MEMORY": {
+    "message": "Lembrar o último utilizado"
+  },
   "HZ_CAP_STYLE": {
     "message": "Estilo da legenda"
   },

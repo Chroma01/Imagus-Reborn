@@ -317,6 +317,12 @@
   "HZ_FZMODE_TIP": {
     "message": "<b>mover con el cursor del ratón</b> - siempre se centrará la imagen si es más pequeña que la pantalla, de lo contrario se ampliará a su tamaño original y se mostrará la parte de la imagen de acuerdo a la posición del puntero en la pantalla, y su posición cambiará a medida que el puntero del ratón se mueva.\n<b>mover arrastrando</b> - la posición de la imagen será fija, pero se podrá desplazar arrastrándola con el cursor."
   },
+  "HZ_RESIZEMODE": {
+    "message": "Modo de cambio de tamaño"
+  },
+  "HZ_RESIZEMODE_MEMORY": {
+    "message": "Recordar último uso"
+  },
   "HZ_CAP_STYLE": {
     "message": "Estilo para el texto de la imagen"
   },

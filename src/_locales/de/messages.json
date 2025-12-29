@@ -302,6 +302,12 @@
   "HZ_FZMODE_TIP": {
     "message": "Der erste Modus zentriert das Bild immer, wenn es kleiner als der Bildschirm ist, andernfalls wird proportional auf den Teil des Bildes gezoomt, in dem sich der Mauszeiger auf dem Bildschirm befindet. Außerdem ändert sich seine Position, wenn sich der Mauszeiger bewegt.\nIm zweiten Modus ist die Position des Bildes statisch, kann aber durch Ziehen geändert werden."
   },
+  "HZ_RESIZEMODE": {
+    "message": "Größenänderungsmodus"
+  },
+  "HZ_RESIZEMODE_MEMORY": {
+    "message": "Zuletzt verwendet merken"
+  },
   "HZ_CAP_STYLE": {
     "message": "Beschriftungsstil"
   },
