@@ -503,6 +503,9 @@
   "SC_SCRLVIDWITHKEY": {
     "message": "Ctrl moet ingedrukt worden gehouden om door de video te scrollen"
   },
+  "SAVE_ALERT": {
+    "message": "U moet de wijzigingen opslaan of de pagina vernieuwen"
+  },
   "ALLOW_USER_SCRIPTS_FF": {
     "message": "Om verder te gaan, moet u <a href=\"#\">gebruikersscripts toestaan</a>."
   }

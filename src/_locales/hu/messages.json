@@ -503,6 +503,9 @@
   "SC_SCRLVIDWITHKEY": {
     "message": "A Ctrl billentyűt lenyomva kell tartani a videó görgetéséhez"
   },
+  "SAVE_ALERT": {
+    "message": "A változtatásokat el kell mentenie, vagy frissítenie kell az oldalt"
+  },
   "ALLOW_USER_SCRIPTS_FF": {
     "message": "A folytatáshoz <a href=\"#\">engedélyeznie kell a felhasználói szkripteket</a>."
   }

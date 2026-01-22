@@ -503,6 +503,9 @@
   "SC_SCRLVIDWITHKEY": {
     "message": "Ctrl deve ser pressionado para rolar o vídeo"
   },
+  "SAVE_ALERT": {
+    "message": "Você precisa salvar as alterações ou atualizar a página"
+  },
   "ALLOW_USER_SCRIPTS_FF": {
     "message": "Para continuar, tem de <a href=\"#\">permitir scripts do utilizador</a>."
   }

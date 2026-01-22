@@ -503,6 +503,9 @@
   "SC_SCRLVIDWITHKEY": {
     "message": "Ctrl doit être maintenu pour faire défiler la vidéo"
   },
+  "SAVE_ALERT": {
+    "message": "Vous devez enregistrer les modifications ou actualiser la page"
+  },
   "ALLOW_USER_SCRIPTS_FF": {
     "message": "Pour continuer, vous devez <a href=\"#\">autoriser les scripts utilisateur</a>."
   }

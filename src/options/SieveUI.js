@@ -668,7 +668,13 @@ var sieve_sec,
             SieveUI.countRules();
             document.querySelector(".clear_search").style.visibility = str ? "visible" : "hidden";
         },
+
         update: async function (local) {
+            if ($("save_button").classList.contains("alert")) {
+                alert(_("SAVE_ALERT"));
+                return;
+            }
+
             if (local || !cfg.sieve || !Object.keys(cfg.sieve).length || confirm(_("SIV_UPDALERT"))) {
                 sieve_container.textContent = "";
                 SieveUI.countRules("LOADING");

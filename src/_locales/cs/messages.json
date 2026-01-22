@@ -503,6 +503,9 @@
   "SC_SCRLVIDWITHKEY": {
     "message": "Chcete-li posouvat video, musíte podržet Ctrl"
   },
+  "SAVE_ALERT": {
+    "message": "Musíte uložit změny nebo obnovit stránku"
+  },
   "ALLOW_USER_SCRIPTS_FF": {
     "message": "Chcete-li pokračovat, musíte <a href=\"#\">povolit uživatelské skripty</a>."
   }
