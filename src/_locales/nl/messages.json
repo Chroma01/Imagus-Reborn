@@ -502,5 +502,8 @@
   },
   "SC_SCRLVIDWITHKEY": {
     "message": "Ctrl moet ingedrukt worden gehouden om door de video te scrollen"
+  },
+  "ALLOW_USER_SCRIPTS_FF": {
+    "message": "Om verder te gaan, moet u <a href=\"#\">gebruikersscripts toestaan</a>."
   }
 }

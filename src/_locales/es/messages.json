@@ -502,5 +502,8 @@
   },
   "SC_SCRLVIDWITHKEY": {
     "message": "Se debe mantener presionada la tecla Ctrl para desplazar el video."
+  },
+  "ALLOW_USER_SCRIPTS_FF": {
+    "message": "Para continuar, debe <a href=\"#\">permitir los scripts de usuario</a>."
   }
 }

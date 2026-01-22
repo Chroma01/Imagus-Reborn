@@ -502,5 +502,8 @@
   },
   "APP_READY": {
     "message": "Great! \"Imagus\" is ready now."
+  },
+  "ALLOW_USER_SCRIPTS_FF": {
+    "message": "To continue you have to <a href=\"#\">allow User Scripts</a>."
   }
 }

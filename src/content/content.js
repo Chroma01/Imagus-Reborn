@@ -2918,7 +2918,7 @@
             PVI.capturedMoveEvent = e;
             win.top.postMessage({ vdfDpshPtdhhd: "isFrame" }, "*");
             Port.listen(PVI.onMessage);
-            Port.send({ cmd: "hello" });
+            Port.send({ cmd: "hello" }, PVI.onMessage);
         },
 
         initOnMouseMoveEnd: function (triggerMouseover) {

@@ -502,5 +502,8 @@
   },
   "SC_SCRLVIDWITHKEY": {
     "message": "Aby przewijać wideo, należy przytrzymać klawisz Ctrl"
+  },
+  "ALLOW_USER_SCRIPTS_FF": {
+    "message": "Aby kontynuować, musisz <a href=\"#\">zezwolić na skrypty użytkownika</a>."
   }
 }

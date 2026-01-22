@@ -656,13 +656,20 @@ window.addEventListener(
                 }`;
         });
 
-        document.querySelector("#allow_user_scripts_message > a").addEventListener("click", function (event) {
+        $("allow_scripts_message").addEventListener("click", function (event) {
             event.preventDefault();
+switch (this.dataset.type) {
+                case "scripts":
             chrome.tabs.create({ url: "chrome://extensions/?id=" + chrome.runtime.id + "#:~:text=Allow%20user%20scripts" });
-        });
-        document.querySelector("#allow_dev_mode_message > a").addEventListener("click", function (event) {
-            event.preventDefault();
+        break;
+                case "firefox":
+                    chrome.permissions.request({ permissions: ["userScripts"] });
+                    break;
+                case "devmode":
+                default:
             chrome.tabs.create({ url: "chrome://extensions/#:~:text=Developer%20mode" });
+break;
+            }
         });
 
         setTimeout(checkUserScripts, 500);
@@ -678,26 +685,28 @@ document.addEventListener("keydown", function (e) {
 }, true);
 
 async function checkUserScripts() {
+const msg = $("allow_scripts_message");
     try {
         const scripts = await chrome.userScripts.getScripts();
         if (scripts?.length > 0) {
-            $("allow_dev_mode_message").innerHTML =
-            $("allow_user_scripts_message").innerHTML = _("APP_READY").replace('"Imagus"', app.name);
-            $("allow_dev_mode_message").style.backgroundColor =
-            $("allow_user_scripts_message").style.backgroundColor = "#dcfad7";
+            msg.innerHTML = _("APP_READY").replace('"Imagus"', app.name);
+            msg.style.backgroundColor = "#dcfad7";
             return;
         } else {
             Port.send({ cmd: "loadScripts" });
-            if ($("allow_dev_mode_message").style.display !== "block") {
-                $("allow_user_scripts_message").style.display = "block";
-            }
-        }
+                    }
     } catch(e) {
-        if (e.message?.includes("API is only available for users in developer mode")) {
-            $("allow_dev_mode_message").style.display = "block";
+if (platform === "firefox") {
+            msg.dataset.type = "firefox";
+            msg.innerHTML = _("ALLOW_USER_SCRIPTS_FF");
+        } else         if (e.message?.includes("API is only available for users in developer mode")) {
+            msg.dataset.type = "devmode";
+            msg.innerHTML = _("ALLOW_DEV_MODE");
         } else {
-            $("allow_user_scripts_message").style.display = "block";
+            msg.dataset.type = "scripts";
+            msg.innerHTML = _("ALLOW_USER_SCRIPTS");
         }
+msg.style.display = "block";
     }
 
     setTimeout(checkUserScripts, 2000);

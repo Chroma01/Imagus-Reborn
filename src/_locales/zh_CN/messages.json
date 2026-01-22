@@ -502,5 +502,8 @@
   },
   "SC_SCRLVIDWITHKEY": {
     "message": "必须按住 Ctrl 才能滚动视频"
+  },
+  "ALLOW_USER_SCRIPTS_FF": {
+    "message": "要继续，您必须 <a href=\"#\">允许用户脚本</a>。"
   }
 }

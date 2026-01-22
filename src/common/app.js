@@ -4,7 +4,7 @@ let cfg;
 
 const catchEvent = {};
 const app = {};
-const platform = ""; // for backward compatibility
+const platform = location.protocol ===  "moz-extension:" ? "firefox" : "chrome";
 
 function buildNodes(element, nodes) {
     if (!element || !Array.isArray(nodes)) {
@@ -79,11 +79,11 @@ window.addEventListener(
 const Port = {
     listen: function (callback) {
         if (this.listener) {
-            chrome.runtime.onMessage.removeListener(this.listener);
+            chrome.runtime.onMessage?.removeListener(this.listener);
         }
 
         if (typeof callback === "function") {
-            if (/^(ms-browser|moz)-extension:/.test(location.protocol)) {
+            if (platform === "firefox") {
                 this.listener = function (message, sender) {
                     if (!sender) {
                         callback(message);
@@ -92,15 +92,15 @@ const Port = {
             } else {
                 this.listener = callback;
             }
-            chrome.runtime.onMessage.addListener(this.listener);
+            chrome.runtime.onMessage?.addListener(this.listener);
         } else {
             this.listener = null;
         }
     },
 
-    send: async function (message) {
-        if (Port.listener) {
-            return chrome.runtime.sendMessage(message, Port.listener);
+    send: async function (message, callback) {
+        if (Port.listener || callback) {
+            return chrome.runtime.sendMessage(message, Port.listener || callback);
         } else {
             return chrome.runtime.sendMessage(message);
         }

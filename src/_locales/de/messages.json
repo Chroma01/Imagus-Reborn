@@ -502,5 +502,8 @@
   },
   "SC_SCRLVIDWITHKEY": {
     "message": "Zum Scrollen des Videos muss die Strg-Taste gedrückt gehalten werden"
+  },
+  "ALLOW_USER_SCRIPTS_FF": {
+    "message": "Um fortzufahren, müssen Sie <a href=\"#\">Benutzerskripte zulassen</a>."
   }
 }

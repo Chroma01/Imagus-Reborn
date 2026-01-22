@@ -4,6 +4,8 @@ var manifest = chrome.runtime.getManifest();
 var cachedSieveRes = [],
     cachedPrefs = {};
 
+const platform = location.protocol ===  "moz-extension:" ? "firefox" : "chrome";
+
 var cfg = {
     sessionGet: (keys, callback) => {
         return callback ? chrome.storage.session.get(keys, callback) : chrome.storage.session.get(keys);
@@ -275,7 +277,7 @@ function onMessage(message, sender, sendResponse) {
             }
             break;
         case "history":
-            if (chrome.extension?.inIncognitoContext) break;
+            if (chrome.extension?.inIncognitoContext || sender.tab?.incognito) break;
             if (msg.manual) {
                 chrome.history.getVisits({ url: msg.url }, function (hv) {
                     chrome.history[(hv.length ? "delete" : "add") + "Url"]({ url: msg.url });
@@ -406,14 +408,20 @@ function keepAlive() {
     setInterval(chrome.runtime.getPlatformInfo, 25_000);
 }
 
-function registerContentScripts() {
+async function registerContentScripts() {
     try {
-        chrome.userScripts.configureWorld({ csp: "script-src 'self' 'unsafe-eval'", messaging: !0 });
-        chrome.userScripts.unregister().then(function () {
-            chrome.userScripts.register([
+        await chrome.userScripts.configureWorld({ csp: "script-src 'self' 'unsafe-eval'", messaging: true });
+    } catch(error) {
+        chrome.runtime.openOptionsPage();
+        return;
+    }
+
+    await chrome.runtime.onUserScriptMessage?.addListener(onMessage);
+    await chrome.userScripts.unregister();
+    await chrome.userScripts.register([
                 {
                     id: "app.js",
-                    allFrames: !0,
+            allFrames: true,
                     matches: ["<all_urls>"],
                     world: "USER_SCRIPT",
                     runAt: "document_start",
@@ -421,17 +429,13 @@ function registerContentScripts() {
                 },
                 {
                     id: "content.js",
-                    allFrames: !0,
+            allFrames: true,
                     matches: ["<all_urls>"],
                     runAt: "document_idle",
                     world: "USER_SCRIPT",
                     js: [{ file: "content/content.js" }],
                 },
             ]);
-        });
-    } catch(error) {
-        chrome.runtime.openOptionsPage();
-    }
 }
 
 // Sieve auto update once a week
@@ -578,7 +582,6 @@ chrome.runtime.onInstalled.addListener(function (e) {
         chrome.runtime.openOptionsPage();
     }
 });
-chrome.runtime.onMessage.addListener(onMessage);
-chrome.runtime.onUserScriptMessage.addListener(onMessage);
+chrome.runtime.onMessage?.addListener(onMessage);
 
 keepAlive();

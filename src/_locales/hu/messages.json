@@ -502,5 +502,8 @@
   },
   "SC_SCRLVIDWITHKEY": {
     "message": "A Ctrl billentyűt lenyomva kell tartani a videó görgetéséhez"
+  },
+  "ALLOW_USER_SCRIPTS_FF": {
+    "message": "A folytatáshoz <a href=\"#\">engedélyeznie kell a felhasználói szkripteket</a>."
   }
 }
