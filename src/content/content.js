@@ -1737,10 +1737,10 @@
                 if (PVI.anim.height) PVI.DIV.style.height = "0";
             }
             if ((animDIV && PVI.anim.opacity) || animLDR) PVI.BOX.style.opacity = "0";
-            PVI.timers.anim_end = setTimeout(PVI.reset, PVI.anim.maxDelay);
+            PVI.timers.anim_end = setTimeout(PVI.reset, PVI.anim.maxDelay, null, e.relatedTarget);
         },
 
-        reset: function (preventImmediateHover) {
+        reset: function (preventImmediateHover, target) {
             if (!PVI.DIV) return;
             if (PVI.iFrame) win.parent.postMessage({ vdfDpshPtdhhd: "from_frame", reset: true }, "*");
             if (PVI.state) win.removeEventListener("mousemove", PVI.m_move, true);
@@ -1787,7 +1787,7 @@
                 PVI.lastScrollTRG = PVI.TRG;
                 PVI.scroller();
             }
-            PVI.showHVR(false);
+            PVI.showHVR(false, target);
             PVI.setCursor();
             PVI.state = 1;
         },
@@ -2312,7 +2312,7 @@
                     PVI.timers.resolver = null;
                 }
                 if (e.relatedTarget) {
-                    PVI.showHVR(false);
+                    PVI.showHVR(false, e.relatedTarget);
                     const ls = PVI.lastTRGStyle;
                     if (ls.outline !== null) {
                         e.relatedTarget.style.outline = ls.outline;
@@ -2387,7 +2387,7 @@
                         trg.style.cursor = "zoom-in";
                     }
                     if (cfg.hz.markOnHovered === "styled" || cfg.hz.markOnHovered === "both") {
-                        PVI.showHVR();
+                        PVI.showHVR(true);
                     }
                 if (isFrozen) {
                     clearTimeout(PVI.timers.resolver);
@@ -2403,13 +2403,16 @@
             }
         },
 
-        showHVR: function (visible = true) {
+        showHVR: function (visible = true, target) {
             clearTimeout(PVI.timers.hvr_hide);
             if (!visible) {
-                PVI.timers.hvr_hide = setTimeout(() => PVI.HVR.style.opacity = "0", 0);
+                if (!target || target === PVI.TRG || target === PVI.DIV) {
+                    PVI.timers.hvr_hide = setTimeout(() => PVI.HVR.style.opacity = "0", 0);
+                }
                 return;
             }
             if (!PVI.TRG || cfg.hz.markOnHovered !== "styled" && cfg.hz.markOnHovered !== "both") return;
+            PVI.HVR.TRG = PVI.TRG;
             PVI.create();
             const rect = PVI.TRG.getBoundingClientRect();
             const style = win.getComputedStyle(PVI.TRG);
