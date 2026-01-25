@@ -429,7 +429,7 @@ async function download(msg, incognito, sendResponse) {
     }
 
     const params = {
-        url: msg.url,
+        url: msg.blob ? URL.createObjectURL(msg.blob) : msg.url,
         filename: msg.filename && (msg.ext || msg.priorityExt) ? `${msg.filename}.${msg.priorityExt || msg.ext}` : (msg.urlName || undefined),
         conflictAction: "uniquify"
     };

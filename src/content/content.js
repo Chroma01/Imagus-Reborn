@@ -220,6 +220,9 @@
                 resp = await resp.blob();
                 msg.url = URL.createObjectURL(resp);
                 msg.urlName = src.substr(src.lastIndexOf('/') + 1).split('#')[0].split('?')[0];
+                if (platform === "firefox") {
+                    msg.blob = resp;
+                }
 
                 Port.send(msg);
             } catch(e) {
