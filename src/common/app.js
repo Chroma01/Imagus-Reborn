@@ -4,7 +4,7 @@ let cfg;
 
 const catchEvent = {};
 const app = {};
-const platform = typeof browser === "object" && browser.runtime.id.startsWith('{') ? "firefox" : "chrome";
+const platform = typeof browser === "object" ? "firefox" : "chrome";
 
 function buildNodes(element, nodes) {
     if (!element || !Array.isArray(nodes)) {
