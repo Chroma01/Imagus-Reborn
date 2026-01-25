@@ -40,6 +40,7 @@ var sieve_sec,
             });
             document.addEventListener("keydown", function (e) {
                 if (document.location.hash !== "#sieve") return;
+                if (e.shiftKey || e.altKey) return;
                 let t = e.target;
                 if (t.nodeName === "SPAN" && (e.key === "Escape" || e.key === "Enter")) {
                     e.preventDefault();
@@ -84,18 +85,18 @@ var sieve_sec,
                     }
                 } else if (t.isContentEditable || t.nodeName === "INPUT" || t.nodeName === "TEXTAREA") {
                     return;
-                } else if (e.key === "Escape") {
+                } else if (e.key === "Escape" && !(e.ctrlKey || e.metaKey)) {
                     sieve_container.querySelectorAll("div.selected").forEach(el => el.classList.remove("selected"));
                 } else if (e.code === "KeyE" && (e.ctrlKey || e.metaKey)) {
                     e.preventDefault();
                     SieveUI.export();
-                } else if (e.key === "Delete") {
+                } else if (e.key === "Delete" && !(e.ctrlKey || e.metaKey)) {
                     e.preventDefault();
                     SieveUI.remove();
                 } else if (e.key === "Space" && (e.ctrlKey || e.metaKey)) {
                     e.preventDefault();
                     SieveUI.disable();
-                } else if (e.code === "KeyI" && (e.ctrlKey || e.metaKey) || e.key === "Insert") {
+                } else if (e.code === "KeyI" && (e.ctrlKey || e.metaKey) || e.key === "Insert" && !(e.ctrlKey || e.metaKey)) {
                     e.preventDefault();
                     document.querySelector("[data-action='import-rules']").click();
                 }

@@ -1854,7 +1854,7 @@
 
             } else if (!(e.altKey || e.metaKey) && (PVI.state > 2 || PVI.LDR_msg)) {
                 pv = !e.ctrlKey;
-                if (e.ctrlKey && key === "S" || !e.ctrlKey && !e.shiftKey && key === cfg.keys.hz_save) {
+                if (e.ctrlKey && !e.shiftKey && key === "S" || !e.ctrlKey && !e.shiftKey && key === cfg.keys.hz_save) {
                     if (!e.repeat && PVI.CNT.src) {
                         download();
                     }
