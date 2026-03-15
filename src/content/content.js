@@ -1956,7 +1956,7 @@
                             if (PVI.VID.audio) PVI.VID.currentTime += key === "PgDn" ? 4 : -4;
                             else {
                                 PVI.VID.pause();
-                                PVI.VID.currentTime = (PVI.VID.currentTime * 25 + (key === "PgDn" ? 1 : -1)) / 25 + 1e-5;
+                                PVI.VID.currentTime = (PVI.VID.currentTime * 30 + (key === "PgDn" ? 1 : -1)) / 30 + 1e-5;
                             }
                         } else pv = null;
                     }
