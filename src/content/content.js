@@ -608,6 +608,7 @@
             if (PVI.DIV || PVI.state < 0) return;
 
             PVI.ROOT = doc.createElement("div");
+            PVI.ROOT.classList.add("imagus");
             PVI.ROOT.attachShadow({ mode: "open" });
             doc.documentElement.appendChild(PVI.ROOT);
 
