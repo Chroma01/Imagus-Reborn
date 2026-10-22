@@ -3625,7 +3625,12 @@
                 else PVI.set(d.src);
 
             } else if (cmd === "relay" && platform === "firefox") {
-                PVI.onMessage(JSON.parse(JSON.stringify(d.message)));
+                const rCmd = d.message?.cmd;
+                if (rCmd === "enable" || rCmd === "disable") {
+                    Port.send({ cmd: "get_status" });
+                } else if (rCmd === "reinit") {
+                    PVI.onMessage({ cmd: rCmd });
+                }
             }
         },
 

@@ -278,6 +278,10 @@ function onMessage(message, sender, sendResponse) {
             toggleTab(sender.tab);
             break;
 
+        case "get_status":
+            sendStatus(sender, sendResponse);
+            break;
+
         case "ignore_url":
             grantUrlAdd(msg.grantString);
             break;
@@ -695,6 +699,16 @@ function initTab(sender, sendResponse) {
         sendResponse(resp);
     } else {
         chrome.tabs.sendMessage(sender.tab.id, resp);
+    }
+}
+
+async function sendStatus(sender, sendResponse) {
+    const resp = {
+        cmd: grantsIsBlocked(sender.tab.url) ? "disable" : "enable",
+        isIframe: !!sender.tab.frameId
+    };
+    if (typeof sendResponse === "function") {
+        sendResponse(resp);
     }
 }
 
