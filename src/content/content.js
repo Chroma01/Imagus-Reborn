@@ -122,7 +122,7 @@
         if (e.type !== "keydown") {
             elem = undefined
         }
-        PVI.timers.copy = setTimeout(copyToClipboard, 500, text, elem);
+        PVI.timers.copy = setTimeout(copyToClipboard, isDouble ? 0 : 500, text, elem);
     }
 
     var getSrc = function () {
