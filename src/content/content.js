@@ -2257,7 +2257,7 @@
                 }
             }
             delete PVI.TRG.IMGS_c_resolved;
-            PVI.TRG.IMGS_c = PVI.CNT === PVI.VIDEOJS ? PVI.PLAYER?.src() : PVI.CNT.src;
+            PVI.TRG.IMGS_c = PVI.CNT === PVI.VIDEOJS ? PVI.PLAYER?.src() + "#mp4" : PVI.CNT.src;
             if (!PVI.TRG.IMGS_SVG) PVI.stack[PVI.IMG.src] = true;
             PVI.show(true);
             PVI.HD_cursor(PVI.TRG.IMGS_HD !== false);
