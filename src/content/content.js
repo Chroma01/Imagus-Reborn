@@ -2562,11 +2562,8 @@
                     pv = null;
                     if (PVI.isVideo()) {
                         pv = true;
-                        if (key === "Space") {
-                            if (e.shiftKey) {
-                                PVI.PLAYER.controls(!PVI.PLAYER.controls());
-                            }
-
+                        if (key === "Space" && e.shiftKey) {
+                            PVI.PLAYER.controls(!PVI.PLAYER.controls());
                         } else if ((key === "Right" || key === "Left") && (!PVI.TRG.IMGS_album || PVI.TRG.IMGS_album && e.ctrlKey) && !e.shiftKey) {
                             let delta = key === "Left" ? -5 : 5;
                             let time = PVI.PLAYER.currentTime() + delta;
