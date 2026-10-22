@@ -967,6 +967,7 @@
                 { tag: "b", attrs: { style: "display: none;" } },
                 { tag: "b", attrs: { style: `display: ${cfg.hz.capWH ? "inline-block" : "none"}` } },
                 { tag: "b", attrs: { class: "time", style: "display: none;" } },
+                { tag: "b", attrs: { class: "side" } },
                 { tag: "span", attrs: { style: "color: inherit; display: " + (cfg.hz.capText ? "inline-block" : "none") } },
             ]);
             PVI.CAP_TIME = PVI.CAP.children[2];
