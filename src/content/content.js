@@ -3279,11 +3279,11 @@
                 if (PVI.HVR?.style.opacity !== "0" && (!target || target === PVI.TRG || PVI.ROOT.contains(target))) {
                     PVI.timers.hvr_hide = setTimeout(() => PVI.HVR.style.opacity = "0", 0);
                 }
+                win.removeEventListener("scrollend", PVI.updateHVR, { passive: true });
                 return;
             }
             if (!PVI.TRG || cfg.hz.markOnHovered !== "styled" && cfg.hz.markOnHovered !== "both") return;
             PVI.HVR.TRG = PVI.TRG;
-            PVI.create();
             const rect = PVI.TRG.getBoundingClientRect();
             const style = win.getComputedStyle(PVI.TRG);
             PVI.HVR.style.width = rect.width + "px";
@@ -3296,6 +3296,11 @@
             PVI.HVR.style.borderBottomRightRadius = (parseInt(style.borderBottomRightRadius, 10) || 2) + "px";
             PVI.HVR.style.display = "block";
             PVI.HVR.style.opacity = "1";
+            win.addEventListener("scrollend", PVI.updateHVR, { passive: true });
+        },
+
+        updateHVR: function () {
+            PVI.showHVR();
         },
 
         load: function (src) {
