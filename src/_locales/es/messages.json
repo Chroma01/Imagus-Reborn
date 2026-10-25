@@ -420,7 +420,7 @@
     "message": "Guardar el contenido del visor"
   },
   "HZ_SC_COPY": {
-    "message": "Copiar URL (pulsa dos veces para copiar el álbum completo)"
+    "message": "Copiar URL (pulsar dos veces para copiar el texto del pie de foto)"
   },
   "SIV_CACHERES": {
     "message": "Almacenar en caché las direcciones resueltas (res)"
@@ -579,7 +579,7 @@
     "message": "Nunca bucle"
   },
   "HZ_TOOLBAR_BTNS_TIP": {
-    "message": "Posibles botones:\n<b>X</b> - ocultar barra de herramientas\n<b>S</b> - guardar (descargar)\n<b>O</b> - abrir en nueva pestaña/ventana\n<b>G</b> - modo galería\n<b>I</b> - ir a/buscar\n<b>R</b> - rotar\n<b>P</b> - abrir preferencias\n\nPredeterminado: XSOGIRP"
+    "message": "Botones posibles:\n<b>X</b> - ocultar barra de herramientas\n<b>S</b> - guardar (descargar)\n<b>O</b> - abrir en nueva pestaña/ventana\n<b>C</b> - copiar URL (o álbum)\n<b>T</b> - copiar texto del pie de foto\n<b>G</b> - modo galería\n<b>I</b> - ir a / buscar\n<b>R</b> - rotar\n<b>P</b> - abrir preferencias\n\nPredeterminado: XSOCTGIRP"
   },
   "IGNORE_ELEMENT": {
     "message": "Ignorar elemento..."
@@ -667,5 +667,8 @@
   },
   "CLEAR": {
     "message": "Borrar"
+  },
+  "COPY_CAPTION": {
+    "message": "Copiar texto del pie de foto"
   }
 }

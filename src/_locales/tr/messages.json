@@ -354,7 +354,7 @@
     "message": "Araç çubuğunu göster"
   },
   "HZ_TOOLBAR_BTNS_TIP": {
-    "message": "Kullanılabilir düğmeler:\n<b>X</b> - araç çubuğunu gizle\n<b>S</b> - kaydet (indir)\n<b>O</b> - yeni sekmede/pencerede aç\n<b>G</b> - galeri modu\n<b>I</b> - git/ara\n<b>R</b> - döndür\n<b>P</b> - tercihleri aç\n\nVarsayılan: XSOGIRP"
+    "message": "Kullanılabilir düğmeler:\n<b>X</b> - araç çubuğunu gizle\n<b>S</b> - kaydet (indir)\n<b>O</b> - yeni sekmede/pencerede aç\n<b>C</b> - URL'yi (veya albümü) kopyala\n<b>T</b> - başlık metnini kopyala\n<b>G</b> - galeri modu\n<b>I</b> - git / ara\n<b>R</b> - döndür\n<b>P</b> - tercihleri aç\n\nVarsayılan: XSOCTGIRP"
   },
   "HZ_FZTOOLBAR_BTNS": {
     "message": "Araç çubuğu düğmeleri"
@@ -528,7 +528,7 @@
     "message": "Açılır pencere içeriğini kaydet"
   },
   "HZ_SC_COPY": {
-    "message": "URL'yi kopyala (tüm albümü kopyalamak için iki kez tıklayın)"
+    "message": "URL'yi kopyala (başlık metnini kopyalamak için iki kez basın)"
   },
   "SIV_CACHERES": {
     "message": "Çözümlenen içeriği önbelleğe al"
@@ -667,5 +667,8 @@
   },
   "CLEAR": {
     "message": "Temizle"
+  },
+  "COPY_CAPTION": {
+    "message": "Başlık metnini kopyala"
   }
 }

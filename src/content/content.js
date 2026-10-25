@@ -102,13 +102,13 @@
         animate(elem);
     }
 
-    var copyUrls = function (e) {
+    var copyUrls = function (e, caption) {
         if (PVI.timers.copy) clearTimeout(PVI.timers.copy);
         let isDouble = !!PVI.timers.copy;
         let text = "";
         let elem = PVI.DIV;
 
-        if (isDouble && e.type === "keydown") {
+        if (isDouble && e.type === "keydown" || caption) {
             text = PVI.TRG.IMGS_caption || "";
             elem = PVI.CAP;
         } else if (PVI.TRG?.IMGS_album && (PVI.galleryState === 2 || isDouble)) {
@@ -122,7 +122,7 @@
         if (e.type !== "keydown") {
             elem = undefined
         }
-        PVI.timers.copy = setTimeout(copyToClipboard, isDouble ? 0 : 500, text, elem);
+        PVI.timers.copy = setTimeout(copyToClipboard, isDouble || caption ? 0 : 500, text, elem);
     }
 
     var getSrc = function () {
@@ -776,6 +776,7 @@
                 "S": { tag: "button", text: "S", attrs: { "data-action": "download", title: _("SAVE") } },
                 "O": { tag: "button", text: "O", attrs: { "data-action": "open", title: _("OPEN_IN_NEW_TAB") } },
                 "C": { tag: "button", text: "C", attrs: { "data-action": "copy", title: _("COPY_URL") } },
+                "T": { tag: "button", text: "T", attrs: { "data-action": "copy_caption", title: _("COPY_CAPTION") } },
                 "G": { tag: "button", text: "G", attrs: { "data-action": "gallery", title: _("GALLERY") } },
                 "I": { tag: "button", text: "#", attrs: { "data-action": "goto", title: _("GOTO_SEARCH") } },
                 "R": { tag: "button", text: "↻", attrs: { "data-action": "rotate", title: _("ROTATE_RIGHT") } },
@@ -2417,6 +2418,9 @@
                 case "copy":
                     copyUrls(e);
                     break;
+                case "copy_caption":
+                    copyUrls(e, true);
+                    break;
                 default:
                     break;
             }
@@ -2510,14 +2514,14 @@
                     }
                     pv = true;
 
+                } else if (PVI.state === 4 && !e.shiftKey &&
+                    (e.ctrlKey && key === "C" || !e.ctrlKey && key === cfg.keys.hz_copy)
+                ) {
+                    pv = true;
+                    copyUrls(e);
                 } else if (e.ctrlKey) {
                     if (PVI.state === 4) {
-                        if (key === "C") {
-                            if ("oncopy" in doc) {
-                                pv = true;
-                                copyUrls(e);
-                            }
-                        } else if (key === cfg.keys.openTab) {
+                        if (key === cfg.keys.openTab) {
                             openTab(e);
                             pv = true;
                         } else if (key === "Left" || key === "Right") {

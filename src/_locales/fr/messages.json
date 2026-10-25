@@ -420,7 +420,7 @@
     "message": "Enregistrer le contenu de l'aperçu"
   },
   "HZ_SC_COPY": {
-    "message": "Copier l’URL (appuyez deux fois pour copier l’album entier)"
+    "message": "Copier l'URL (appuyer deux fois pour copier le texte de la légende)"
   },
   "SIV_CACHERES": {
     "message": "Mettre le contenu traité dans le cache"
@@ -579,7 +579,7 @@
     "message": "Ne jamais boucler"
   },
   "HZ_TOOLBAR_BTNS_TIP": {
-    "message": "Boutons possibles :\n<b>X</b> - masquer la barre d'outils\n<b>S</b> - enregistrer (télécharger)\n<b>O</b> - ouvrir dans un nouvel onglet/une nouvelle fenêtre\n<b>G</b> - mode galerie\n<b>Je</b> - aller à/rechercher\n<b>R</b> - faire pivoter\n<b>P</b> - ouvrir les préférences\n\nPar défaut : XSOGIRP"
+    "message": "Boutons possibles :\n<b>X</b> - masquer la barre d'outils\n<b>S</b> - enregistrer (télécharger)\n<b>O</b> - ouvrir dans un nouvel onglet/fenêtre\n<b>C</b> - copier l'URL (ou l'album)\n<b>T</b> - copier le texte de la légende\n<b>G</b> - mode galerie\n<b>I</b> - aller à / rechercher\n<b>R</b> - faire pivoter\n<b>P</b> - ouvrir les préférences\n\nPar défaut : XSOCTGIRP"
   },
   "IGNORE_ELEMENT": {
     "message": "Ignorer l'élément..."
@@ -667,5 +667,8 @@
   },
   "CLEAR": {
     "message": "Effacer"
+  },
+  "COPY_CAPTION": {
+    "message": "Copier le texte de la légende"
   }
 }

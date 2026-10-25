@@ -420,7 +420,7 @@
     "message": "Felugró tartalmának mentése"
   },
   "HZ_SC_COPY": {
-    "message": "URL másolása (nyomja meg kétszer a teljes album másolásához)"
+    "message": "URL másolása (nyomja meg kétszer a felirat szövegének másolásához)"
   },
   "SIV_CACHERES": {
     "message": "Feldolgozott tartalom gyorsítótározása"
@@ -579,7 +579,7 @@
     "message": "Soha ne hurkoljon"
   },
   "HZ_TOOLBAR_BTNS_TIP": {
-    "message": "Lehetséges gombok:\n<b>X</b> – eszköztár elrejtése\n<b>S</b> - mentés (letöltés)\n<b>O</b> – megnyitás új lapon/ablakban\n<b>G</b> – galéria mód\n<b>Én</b> - goto/search\n<b>R</b> – forgatás\n<b>P</b> – nyitott beállítások\n\nAlapértelmezés: XSOGIRP"
+    "message": "Lehetséges gombok:\n<b>X</b> - eszköztár elrejtése\n<b>S</b> - mentés (letöltés)\n<b>O</b> - megnyitás új lapon/ablakban\n<b>C</b> - URL (vagy album) másolása\n<b>T</b> - felirat szövegének másolása\n<b>G</b> - galéria mód\n<b>I</b> - ugrás / keresés\n<b>R</b> - forgatás\n<b>P</b> - beállítások megnyitása\n\nAlapértelmezett: XSOCTGIRP"
   },
   "IGNORE_ELEMENT": {
     "message": "Elem figyelmen kívül hagyása..."
@@ -667,5 +667,8 @@
   },
   "CLEAR": {
     "message": "Törlés"
+  },
+  "COPY_CAPTION": {
+    "message": "Felirat szövegének másolása"
   }
 }

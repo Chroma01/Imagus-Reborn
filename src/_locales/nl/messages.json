@@ -420,7 +420,7 @@
     "message": "Sla pop-up content op"
   },
   "HZ_SC_COPY": {
-    "message": "URL kopiëren (druk twee keer om het hele album te kopiëren)"
+    "message": "URL kopiëren (tweemaal drukken om de bijschrifttekst te kopiëren)"
   },
   "SIV_CACHERES": {
     "message": "Cache opgeloste content"
@@ -579,7 +579,7 @@
     "message": "Nooit een lus maken"
   },
   "HZ_TOOLBAR_BTNS_TIP": {
-    "message": "Mogelijke knoppen:\n<b>X</b> - werkbalk verbergen\n<b>S</b> - opslaan (downloaden)\n<b>O</b> - openen in nieuw tabblad/venster\n<b>G</b> - galerijmodus\n<b>Ik</b> - ga naar/zoeken\n<b>R</b> - roteren\n<b>P</b> - voorkeuren openen\n\nStandaard: XSOGIRP"
+    "message": "Mogelijke knoppen:\n<b>X</b> - werkbalk verbergen\n<b>S</b> - opslaan (downloaden)\n<b>O</b> - openen in nieuw tabblad/venster\n<b>C</b> - URL (of album) kopiëren\n<b>T</b> - bijschrifttekst kopiëren\n<b>G</b> - galerijmodus\n<b>I</b> - ga naar / zoeken\n<b>R</b> - roteren\n<b>P</b> - voorkeuren openen\n\nStandaard: XSOCTGIRP"
   },
   "IGNORE_ELEMENT": {
     "message": "Element negeren..."
@@ -667,5 +667,8 @@
   },
   "CLEAR": {
     "message": "Wissen"
+  },
+  "COPY_CAPTION": {
+    "message": "Bijschrifttekst kopiëren"
   }
 }

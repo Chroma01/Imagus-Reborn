@@ -354,7 +354,7 @@
     "message": "Show toolbar"
   },
   "HZ_TOOLBAR_BTNS_TIP": {
-    "message": "Possible buttons:\n<b>X</b> - hide toolbar\n<b>S</b> - save(download)\n<b>O</b> - open in new tab/window\n<b>G</b> - gallery mode\n<b>I</b> - goto/search\n<b>R</b> - rotate\n<b>P</b> - open preferences\n\nDefault: XSOGIRP"
+    "message": "Possible buttons:\n<b>X</b> - hide toolbar\n<b>S</b> - save(download)\n<b>O</b> - open in new tab/window\n<b>C</b> - Copy URL (or album)\n<b>T</b> - Copy caption text\n<b>G</b> - gallery mode\n<b>I</b> - goto/search\n<b>R</b> - rotate\n<b>P</b> - open preferences\n\nDefault: XSOCTGIRP"
   },
   "HZ_FZTOOLBAR_BTNS": {
     "message": "Toolbar buttons"
@@ -382,6 +382,9 @@
   },
   "COPY_URL": {
     "message": "Copy URL\nDouble click: copy whole album"
+  },
+  "COPY_CAPTION": {
+    "message": "Copy caption text"
   },
   "GALLERY": {
     "message": "Gallery"
@@ -528,7 +531,7 @@
     "message": "Save pop-up content"
   },
   "HZ_SC_COPY": {
-    "message": "Copy URL (press twice to copy the whole album)"
+    "message": "Copy URL (press twice to copy the caption text)"
   },
   "SIV_CACHERES": {
     "message": "Cache resolved content"
