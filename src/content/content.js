@@ -796,11 +796,17 @@
         },
 
         openVideojs: async function(src) {
-            // if called multimple times while Videojs still loading then only the newest `src` will be opened
+            // if called multiple times while Videojs still loading then only the newest `src` will be opened
             PVI.onVideojsReady = () => {
                 PVI.onVideojsReady = null;
                 PVI.CNT = PVI.VIDEOJS;
-                PVI.PLAYER.src(src);
+                PVI.VIDEOJS.IMGS_src = src;
+                PVI.PLAYER.src({
+                    src: src.split('#')[0],
+                    type: /(#mp4|\.(f4v|mka|mp4)($|\?))/i.test(src) ? 'video/mp4' :
+                        /(#mp3|\.(wav))$/i.test(src) ? 'audio/mp3' :
+                        undefined
+                });
             };
 
             if (PVI.VIDEOJS) {
@@ -2012,12 +2018,7 @@
             }
             if (isVideoUrl(src)) {
                 PVI.show("load");
-                PVI.openVideojs({
-                    src: src.split('#')[0],
-                    type: /(#mp4|\.(f4v|mka|mp4)($|\?))/i.test(src) ? 'video/mp4' :
-                        /(#mp3|\.(wav))$/i.test(src) ? 'audio/mp3' :
-                        undefined
-                });
+                PVI.openVideojs(src);
                 return;
             }
             PVI.PLAYER?.pause();
@@ -2258,7 +2259,7 @@
                 }
             }
             delete PVI.TRG.IMGS_c_resolved;
-            PVI.TRG.IMGS_c = PVI.CNT === PVI.VIDEOJS ? PVI.PLAYER?.src() + "#mp4" : PVI.CNT.src;
+            PVI.TRG.IMGS_c = PVI.CNT === PVI.VIDEOJS ? PVI.VIDEOJS.IMGS_src : PVI.CNT.src;
             if (!PVI.TRG.IMGS_SVG) PVI.stack[PVI.IMG.src] = true;
             PVI.show(true);
             PVI.HD_cursor(PVI.TRG.IMGS_HD !== false);
@@ -2327,6 +2328,7 @@
             if (PVI.CNT === PVI.IMG) PVI.CNT.removeAttribute("src");
             PVI.TBAR.style.display = "";
             PVI.PLAYER?.pause();
+            if (PVI.VIDEOJS) PVI.VIDEOJS.IMGS_src = undefined;
             if (PVI.anim.left || PVI.anim.top) PVI.DIV.style.left = PVI.DIV.style.top = "auto";
             if (PVI.anim.opacity) PVI.DIV.style.opacity = "0";
             if (cfg.hz.LDRanimate) {
