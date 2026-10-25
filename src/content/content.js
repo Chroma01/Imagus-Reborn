@@ -2428,23 +2428,25 @@
         },
 
         keyup_pause: function (e) {
-            if (PVI.pauseIsDown && shortcut.key(e) === cfg.keys.pause) {
-                PVI.PLAYER.options({ inactivityTimeout: PVI.PLAYER._isAudio ? 0 : cfg.hz.hideControlsDelay });
-                PVI.PLAYER.controls(cfg.hz.hideControlsDelay >= 0 || PVI.PLAYER._isAudio);
-                PVI.PLAYER.userActive(PVI.PLAYER._isAudio || cfg.hz.hideControlsDelay === 0);
-                if (PVI.pauseIsDown === 1) {
-                    PVI.playerIsPaused = !PVI.PLAYER.paused();
-                } else if (PVI.pauseIsDown === 2) {
-                    PVI.PLAYER.playbackRate(1);
-                }
-                if (PVI.playerIsPaused) {
-                    PVI.PLAYER.pause();
-                } else {
-                    PVI.PLAYER.play();
-                }
-                PVI.pauseIsDown = 0;
-                win.removeEventListener("keyup", PVI.keyup_pause, true);
+            if (!PVI.pauseIsDown) return;
+            const k = shortcut.key(e);
+            if (k !== cfg.keys.pause && !(k === "Space" && e.ctrlKey)) return;
+
+            PVI.PLAYER.options({ inactivityTimeout: PVI.PLAYER._isAudio ? 0 : cfg.hz.hideControlsDelay });
+            PVI.PLAYER.controls(cfg.hz.hideControlsDelay >= 0 || PVI.PLAYER._isAudio);
+            PVI.PLAYER.userActive(PVI.PLAYER._isAudio || cfg.hz.hideControlsDelay === 0);
+            if (PVI.pauseIsDown === 1) {
+                PVI.playerIsPaused = !PVI.PLAYER.paused();
+            } else if (PVI.pauseIsDown === 2) {
+                PVI.PLAYER.playbackRate(1);
             }
+            if (PVI.playerIsPaused) {
+                PVI.PLAYER.pause();
+            } else {
+                PVI.PLAYER.play();
+            }
+            PVI.pauseIsDown = 0;
+            win.removeEventListener("keyup", PVI.keyup_pause, true);
         },
 
         key_action: function (e) {
@@ -2480,7 +2482,9 @@
                 return;
             }
 
-            if (PVI.state === 4 && PVI.isVideo() && key === cfg.keys.pause && !e.shiftKey && !e.ctrlKey) {
+            if (PVI.state === 4 && PVI.isVideo() && !e.shiftKey &&
+                (key === cfg.keys.pause && !e.ctrlKey || key === "Space" && e.ctrlKey)
+            ) {
                 if (e.repeat) {
                     if (PVI.pauseIsDown === 1) {
                         PVI.pauseIsDown = 2;
