@@ -623,7 +623,10 @@ window.addEventListener(
                     return false;
                 }
             }
-            if (e.code === 'Escape') key = "";
+            if (e.code === 'Escape') {
+                if (!e.target.value) e.target.blur();
+                key = "";
+            }
             e.target.value = key;
             document.forms[0].onchange(e);
         }
