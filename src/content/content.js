@@ -2528,18 +2528,20 @@
                         if (key === cfg.keys.openTab) {
                             openTab(e);
                             pv = true;
-                        } else if (key === "Left" || key === "Right") {
-                            let delta = (key === "Left" ? -5 : 5) * (e.shiftKey ? 3 : 1);
-                            let time = PVI.PLAYER.currentTime() + delta;
-                            PVI.PLAYER.currentTime(Math.max(0, time));
-                            PVI.PLAYER.userActive(true);
-                            e.preventDefault?.();
-                        } else if (key === "Up" || key === "Down") {
-                            const delta = key === "Down" ? -0.05 : 0.05;
-                            PVI.PLAYER.volume(Math.max(0, Math.min(1, PVI.PLAYER.volume() + delta)));
-                            PVI.PLAYER.userActive(true);
-                            if (delta > 0) {
-                                PVI.PLAYER.muted(false);
+                        } else if (PVI.isVideo()) {
+                            if (key === "Left" || key === "Right") {
+                                let delta = (key === "Left" ? -5 : 5) * (e.shiftKey ? 3 : 1);
+                                let time = PVI.PLAYER.currentTime() + delta;
+                                PVI.PLAYER.currentTime(Math.max(0, time));
+                                PVI.PLAYER.userActive(true);
+                                e.preventDefault?.();
+                            } else if (key === "Up" || key === "Down") {
+                                const delta = key === "Down" ? -0.05 : 0.05;
+                                PVI.PLAYER.volume(Math.max(0, Math.min(1, PVI.PLAYER.volume() + delta)));
+                                PVI.PLAYER.userActive(true);
+                                if (delta > 0) {
+                                    PVI.PLAYER.muted(false);
+                                }
                             }
                         }
                     }
@@ -2573,8 +2575,13 @@
                         pv = true;
                         if (key === "Space" && e.shiftKey) {
                             PVI.PLAYER.controls(!PVI.PLAYER.controls());
-                        } else if ((key === "Right" || key === "Left") && (!PVI.TRG.IMGS_album || PVI.TRG.IMGS_album && e.ctrlKey) && !e.shiftKey) {
-                            let delta = key === "Left" ? -5 : 5;
+                        } else if (key === "Space" && e.ctrlKey) {
+                            PVI.PLAYER.controls(!PVI.PLAYER.controls());
+                        } else if (
+                            (key === "Right" || key === "Left") &&
+                            (!PVI.TRG.IMGS_album || PVI.TRG.IMGS_album && (e.ctrlKey || cfg.hz.singleArrowTimeJumpInAlbum))
+                        ) {
+                            let delta = (key === "Left" ? -5 : 5) * (e.shiftKey ? 3 : 1);
                             let time = PVI.PLAYER.currentTime() + delta;
                             PVI.PLAYER.currentTime(Math.max(0, time));
                             PVI.PLAYER.userActive(true);
